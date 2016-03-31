@@ -1,0 +1,1 @@
+This project demonstrates the safe way to spawn threads in a web application.

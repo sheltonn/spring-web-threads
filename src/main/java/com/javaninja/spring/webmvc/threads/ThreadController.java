@@ -12,12 +12,21 @@ import org.springframework.web.servlet.ModelAndView;
 public class ThreadController {
 
     @Autowired
-    private ThreadService threadService;
+    private FixedThreadService fixedThreadService;
 
-    @RequestMapping("/thread")
-    public ModelAndView thread() {
+    @Autowired
+    private DynamicThreadService dynamicThreadService;
+
+    @RequestMapping("/fixedWorkers")
+    public ModelAndView fixedWorkers() {
         ModelAndView modelAndView = new ModelAndView("thread");
-        modelAndView.addObject("result", threadService.doStuff());
+        modelAndView.addObject("result", fixedThreadService.withFixedThreads());
+        return modelAndView;
+    }
+    @RequestMapping("/dynamicWorkers")
+    public ModelAndView dynamicWorkers() {
+        ModelAndView modelAndView = new ModelAndView("thread");
+        modelAndView.addObject("result", dynamicThreadService.withDynamicThreads(10));
         return modelAndView;
     }
 }

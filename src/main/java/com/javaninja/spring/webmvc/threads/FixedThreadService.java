@@ -12,7 +12,7 @@ import java.util.UUID;
  * @author norris.shelton
  */
 @Service
-public class ThreadService {
+public class FixedThreadService {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -34,7 +34,7 @@ public class ThreadService {
     @Autowired
     private ThreadWorker worker5;
 
-    public String doStuff() {
+    public String withFixedThreads() {
         worker1.setUniqueInfo("1");
         taskExecutor.execute(worker1);
 

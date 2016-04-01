@@ -16,11 +16,11 @@ import static org.junit.Assert.assertNotNull;
 public class TestThreadService {
 
     @Autowired
-    private ThreadService threadService;
+    private FixedThreadService fixedThreadService;
 
     @Test
     public void doStuff() throws Exception {
-        String result = threadService.doStuff();
+        String result = fixedThreadService.withFixedThreads();
         assertNotNull(result);
     }
 }

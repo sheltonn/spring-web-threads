@@ -18,10 +18,11 @@
         apply to those bean definitions just like to regular bean definitions, but it won't apply to the component scan
         settings themselves.
     -->
-    <context:component-scan base-package="com.javaninja.spring.web.threads"/>
+    <context:component-scan base-package="com.javaninja.spring.webmvc.threads"/>
 
     <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor"
           p:corePoolSize="5"
           p:maxPoolSize="5"
-          p:waitForTasksToCompleteOnShutdown="true"/>
+          p:waitForTasksToCompleteOnShutdown="true"
+          p:awaitTerminationSeconds="20"/>
 </beans>

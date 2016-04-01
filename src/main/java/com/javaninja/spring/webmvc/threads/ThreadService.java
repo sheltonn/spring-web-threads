@@ -1,34 +1,40 @@
-package com.javaninja.spring.web.threads;
+package com.javaninja.spring.webmvc.threads;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 /**
  * @author norris.shelton
  */
 @Service
-public class MyService {
+public class ThreadService {
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private ThreadPoolTaskExecutor taskExecutor;
 
     @Autowired
-    private MyWorker worker1;
+    private ThreadWorker worker1;
 
     @Autowired
-    private MyWorker worker2;
+    private ThreadWorker worker2;
 
     @Autowired
-    private MyWorker worker3;
+    private ThreadWorker worker3;
 
     @Autowired
-    private MyWorker worker4;
+    private ThreadWorker worker4;
 
     @Autowired
-    private MyWorker worker5;
+    private ThreadWorker worker5;
 
-    public void doStuff() {
+    public String doStuff() {
         worker1.setUniqueInfo("1");
         taskExecutor.execute(worker1);
 
@@ -44,18 +50,6 @@ public class MyService {
         worker5.setUniqueInfo("5");
         taskExecutor.execute(worker5);
 
-        for (; ; ) {
-            int count = taskExecutor.getActiveCount();
-            System.out.println("Active Threads : " + count);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            if (count == 0) {
-                taskExecutor.shutdown();
-                break;
-            }
-        }
+        return UUID.randomUUID().toString();
     }
 }

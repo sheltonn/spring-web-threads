@@ -1,5 +1,6 @@
-package com.javaninja.spring.web.threads;
+package com.javaninja.spring.webmvc.threads;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -16,7 +17,7 @@ import java.util.UUID;
  */
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class MyWorker implements Runnable {
+public class ThreadWorker implements Runnable {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -24,9 +25,6 @@ public class MyWorker implements Runnable {
 
     private List<String> data = new LinkedList<>();
 
-    public String getUniqueInfo() {
-        return uniqueInfo;
-    }
 
     public void setUniqueInfo(String uniqueInfo) {
         this.uniqueInfo = uniqueInfo;
@@ -36,9 +34,6 @@ public class MyWorker implements Runnable {
         return data;
     }
 
-    public void setData(List<String> data) {
-        this.data = data;
-    }
 
     /**
      * When an object implementing interface <code>Runnable</code> is used to create a thread, starting the thread
@@ -52,7 +47,7 @@ public class MyWorker implements Runnable {
         logger.info("Started runner {}", uniqueInfo);
 
         try {
-            Thread.sleep(new Random().nextInt(5000));
+            Thread.sleep(new Random().nextInt(10000));
         } catch (InterruptedException e) {
             logger.error("Trouble with thread", e);
         }
@@ -63,5 +58,23 @@ public class MyWorker implements Runnable {
         }
 
         logger.info("Runner {} finishing data={}", uniqueInfo, data);
+    }
+
+    /**
+     * Returns a string representation of the object. In general, the {@code toString} method returns a string that
+     * "textually represents" this object. The result should be a concise but informative representation that is easy
+     * for a person to read. It is recommended that all subclasses override this method.
+     * <p>
+     * The {@code toString} method for class {@code Object} returns a string consisting of the name of the class of
+     * which the object is an instance, the at-sign character `{@code @}', and the unsigned hexadecimal representation
+     * of the hash code of the object. In other words, this method returns a string equal to the value of: <blockquote>
+     * <pre>
+     * getClass().getName() + '@' + Integer.toHexString(hashCode())
+     * </pre> </blockquote>
+     * @return a string representation of the object.
+     */
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this);
     }
 }

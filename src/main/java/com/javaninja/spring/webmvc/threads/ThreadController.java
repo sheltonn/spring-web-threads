@@ -23,6 +23,7 @@ public class ThreadController {
         modelAndView.addObject("result", fixedThreadService.withFixedThreads());
         return modelAndView;
     }
+
     @RequestMapping("/dynamicWorkers")
     public ModelAndView dynamicWorkers() {
         ModelAndView modelAndView = new ModelAndView("thread");

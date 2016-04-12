@@ -47,7 +47,9 @@ public class ThreadWorker implements Runnable {
         logger.info("Started runner {}", uniqueInfo);
 
         try {
-            Thread.sleep(new Random().nextInt(10000));
+            int milliseconds = new Random().nextInt(10000);
+            logger.info("{} sleeping for {} ms", uniqueInfo, milliseconds);
+            Thread.sleep(milliseconds);
         } catch (InterruptedException e) {
             logger.error("Trouble with thread", e);
         }

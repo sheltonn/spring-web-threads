@@ -8,6 +8,10 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.ApplicationContextException;
+import org.springframework.context.ApplicationEventPublisherAware;
+import org.springframework.context.MessageSourceAware;
+import org.springframework.context.ResourceLoaderAware;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 

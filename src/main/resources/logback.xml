@@ -5,8 +5,6 @@
         </encoder>
     </appender>
 
-    <logger name="com.javaninja.spring.webmvc.threads" level="INFO"/>
-
     <!-- the console defaults to INFO level-->
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>

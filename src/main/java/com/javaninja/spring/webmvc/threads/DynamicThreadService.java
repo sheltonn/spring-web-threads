@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 /**
+ * This is the code that controls the execution of a dynamic number of worker threads.
  * @author norris.shelton
  */
 @Service

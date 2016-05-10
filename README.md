@@ -1,1 +1,1 @@
-This project demonstrates the safe way to spawn threads in a web application.
+This project demonstrates the safe way to spawn threads in a web application.  The blog article associated with this project is [here](http://javaninja.net/2016/05/spring-thread-pool-web-application/).

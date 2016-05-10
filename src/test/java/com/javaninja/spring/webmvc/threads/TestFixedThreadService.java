@@ -13,13 +13,13 @@ import static org.junit.Assert.assertNotNull;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
-public class TestThreadService {
+public class TestFixedThreadService {
 
     @Autowired
     private FixedThreadService fixedThreadService;
 
     @Test
-    public void doStuff() throws Exception {
+    public void withFixedThreads() throws Exception {
         String result = fixedThreadService.withFixedThreads();
         assertNotNull(result);
     }

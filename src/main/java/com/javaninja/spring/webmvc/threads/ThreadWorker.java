@@ -13,6 +13,7 @@ import java.util.Random;
 import java.util.UUID;
 
 /**
+ * This class performs the work that is needed in the thread pool.
  * @author norris.shelton
  */
 @Component
